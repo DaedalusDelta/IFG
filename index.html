@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IFG — Internet-Scale Functional Grasping</title>
+  <meta name="description" content="IFG: Internet-Scale Functional Grasping — Project page." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">IFG</a>
+      <div class="links">
+        <a href="#abstract">Abstract</a>
+        <a href="#grasps">Grasps</a>
+        <a href="#method">Method</a>
+        <a href="#results">Results</a>
+        <a href="#bibtex">BibTeX</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top" class="container">
+    <!-- HERO -->
+    <header class="hero">
+      <h1 class="title">IFG: Internet-Scale Functional Grasping</h1>
+      <!-- subtitle removed per request -->
+      <p class="authors">
+        <a href="https://daedalusdelta.github.io/about/">Ray Muxin Liu*</a>, <a href="https://www.linkedin.com/in/mingxuanli0227">Mingxuan Li*</a>, <a href="https://kennyshaw.net/">Kenneth Shaw</a>, <a href="https://www.cs.cmu.edu/~dpathak/">Deepak Pathak</a>
+      </p>
+      <p class="affils">Carnegie Mellon University</p>
+      <div class="badges">
+        <!-- arXiv Badge -->
+        <a class="badge" href="#" aria-label="arXiv paper coming soon">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+            <!-- document icon -->
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+          </svg>
+          <span>arXiv</span><span class="coming-soon">(coming soon)</span>
+        </a>
+
+        <!-- PDF Download Badge -->
+        <a class="badge" href="assets/pdf/IFG.pdf" target="_blank">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>PDF</span>
+        </a>
+
+        <a class="badge" href="#" aria-label="Code coming soon">
+          <!-- GitHub mark simplified -->
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" class="icon">
+            <path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56l-.02-2.19c-3.2.7-3.87-1.37-3.87-1.37-.53-1.36-1.3-1.72-1.3-1.72-1.06-.73.08-.72.08-.72 1.17.08 1.78 1.2 1.78 1.2 1.04 1.77 2.73 1.26 3.4.96.11-.76.41-1.26.75-1.55-2.55-.29-5.23-1.28-5.23-5.67 0-1.25.45-2.27 1.2-3.07-.12-.29-.52-1.46.11-3.04 0 0 .98-.31 3.2 1.17a11.1 11.1 0 0 1 5.82 0c2.22-1.48 3.2-1.17 3.2-1.17.63 1.58.23 2.75.11 3.04.75.8 1.2 1.82 1.2 3.07 0 4.4-2.69 5.38-5.25 5.66.42.36.79 1.07.79 2.17l-.01 3.21c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"></path>
+          </svg>
+          <span>Code</span><span class="coming-soon">(coming soon)</span>
+        </a>
+        <a class="badge" href="#" aria-label="Poster coming soon">
+          <!-- Poster icon (image) -->
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+            <rect x="3" y="4" width="18" height="16" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="9.5" r="1.5"></circle>
+            <path d="M21 16l-6-6-4 4-2-2-6 6"></path>
+          </svg>
+          <span>Poster</span><span class="coming-soon">(coming soon)</span>
+        </a>
+        <a class="badge" href="#" aria-label="Twitter coming soon">
+          <!-- X/Twitter icon -->
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" class="icon">
+            <path d="M17.53 3H20l-6.61 7.57L21.5 21h-5.1l-4.17-4.99L6.5 21H4l7.18-8.23L2.5 3h5.1l3.77 4.5L17.53 3z"></path>
+          </svg>
+          <span>Twitter</span><span class="coming-soon">(coming soon)</span>
+        </a>
+      </div>
+      <div class="teaser">
+        <img src="assets/media/teaser.png" alt="IFG teaser"/>
+      </div>
+    </header>
+
+    <!-- ABSTRACT -->
+    <section id="abstract">
+      <h2 class="section-title">Abstract</h2>
+      <div class="card">
+        <p>Large Vision Models trained on internet-scale data
+        have demonstrated strong capabilities in segmenting and seman-
+        tically understanding object parts, even in cluttered, crowded
+        scenes. However, while these models can direct a robot toward the
+        general region of an object, they lack the geometric understanding
+        required to precisely control dexterous robotic hands for 3D
+        grasping. To overcome this, our key insight is to leverage
+        simulation with a force-closure grasping generation pipeline that
+        understands local geometries of the hand and object in the
+        scene. Because this pipeline is slow and requires ground-truth
+        observations, the resulting data is distilled into a diffusion model
+        that operates in real-time on camera point clouds. By combining
+        the global semantic understanding of internet-scale models with
+        the geometric precision of a simulation-based locally-aware force-
+        closure, IFG achieves high-performance semantic grasping without
+        any manually collected training data.</p>
+      </div>
+    </section>
+
+    <!-- Unified Grasps Section -->
+    <section id="grasps">
+      <h2 class="section-title">Grasps</h2>
+
+      <!-- SINGLE OBJECT GRASPS -->
+      <h3 class="subsection-title center">Single Object Grasp Examples</h3>
+      <div class="grid cols-3">
+        <figure>
+          <model-viewer src="assets/models/scene_0032_1_0000_mask0_idx7.glb"
+                        camera-controls auto-rotate loading="lazy"
+                        class="grasp-viewer"></model-viewer>
+          <figcaption class="center">Grasp 01 — mug</figcaption>
+        </figure>
+
+        <figure>
+          <model-viewer src="assets/models/scene_0032_1_0000_mask0_idx7.glb"
+                        camera-controls auto-rotate loading="lazy"
+                        class="grasp-viewer"></model-viewer>
+          <figcaption class="center">Grasp 02 — hammer</figcaption>
+        </figure>
+
+        <figure>
+          <model-viewer src="assets/models/scene_0032_1_0000_mask0_idx7.glb"
+                        camera-controls auto-rotate loading="lazy"
+                        class="grasp-viewer"></model-viewer>
+          <figcaption class="center">Grasp 03 — bottle</figcaption>
+        </figure>
+      </div>
+
+      <!-- CROWDED SCENE GRASPS -->
+      <h3 class="subsection-title center" style="margin-top: 40px;">Crowded Scene Grasp Examples</h3>
+      <div class="grid cols-3">
+        <figure>
+          <model-viewer src="assets/models/LEAP_g15.glb"
+                        camera-controls auto-rotate loading="lazy"
+                        class="grasp-viewer"></model-viewer>
+          <figcaption class="center">Grasp C01 — bin picking</figcaption>
+        </figure>
+
+        <figure>
+          <model-viewer src="assets/models/LEAP_g48.glb"
+                        camera-controls auto-rotate loading="lazy"
+                        class="grasp-viewer"></model-viewer>
+          <figcaption class="center">Grasp C02 — shelf clutter</figcaption>
+        </figure>
+
+        <figure>
+          <model-viewer src="assets/models/LEAP_g67.glb"
+                        camera-controls auto-rotate loading="lazy"
+                        class="grasp-viewer"></model-viewer>
+          <figcaption class="center">Grasp C03 — table scene</figcaption>
+        </figure>
+      </div>
+    </section>
+
+
+    <!-- METHOD -->
+    <section id="method">
+      <h2 class="section-title">Method</h2>
+
+      <!-- ONE unified card for both overview + pipeline -->
+      <div class="card method-merged">
+
+        <!-- Overview -->
+        <h3 class="method-subtitle">Overview</h3>
+        <figure class="method-overview">
+          <img src="assets/media/method_flowchart.png" alt="Method overview">
+          <figcaption>
+            IFG takes an object mesh and a task prompt as input. To incorporate semantic understanding, it renders the object from multiple
+            viewpoints, applies a VLM-based segmentation model combining SAM and VLPart, and reprojects the results into 3D space to identify
+            task-relevant regions. For geometric grounding, it initializes a force closure objective at these regions and optimizes for functional grasps.
+            The resulting data is then used to train a diffusion model for fast grasp synthesis from depth.
+          </figcaption>
+        </figure>
+
+        <!-- Pipeline -->
+        <h3 class="method-subtitle" style="margin-top: 32px;">Pipeline</h3>
+        <div class="pipeline-grid">
+          <div class="pipeline-block pastel-1">
+            <h4>1) Inputs & Useful Region Proposal</h4>
+            <p>
+              IFG renders multi-view images and applies VLM-guided segmentation (SAM + VLPart) to extract task-relevant parts. These are
+              reprojected to 3D and aggregated per mesh face to identify a “useful region” that localizes functional geometry.
+            </p>
+          </div>
+
+          <div class="pipeline-block pastel-2">
+            <h4>2) Geometric Grasp Synthesis</h4>
+            <p>
+              Candidate hand poses are sampled near the useful region. A force-closure-based energy with joint limits and collision penalties is
+              minimized to produce physically valid and functional grasps.
+            </p>
+          </div>
+
+          <div class="pipeline-block pastel-3">
+            <h4>3) Simulation Evaluation</h4>
+            <p>
+              Each grasp is perturbed and tested in Isaac Gym on tasks such as Lift and Pick&Shake. Success rates across perturbations become
+              continuous labels, and unstable grasps are filtered out.
+            </p>
+          </div>
+
+          <div class="pipeline-block pastel-4">
+            <h4>4) Diffusion Policy Distillation</h4>
+            <p>
+              A diffusion model is trained to map a noisy grasp and depth-based BPS input to a final grasp. This combines semantic priors from VLMs
+              and geometric accuracy from optimization for fast inference.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="results">
+      <h2 class="section-title">Results</h2>
+
+      <!-- 1) Qualitative Results -->
+      <h3 class="subsection-title">1. Qualitative Results</h3>
+      <p class="center">
+      Our method produces stable and task-oriented functional grasps across diverse objects and environments.
+      In single-object scenes, grasps align with affordance-relevant regions such as handles or rims.
+      In crowded scenes, the VLM-guided segmentation allows IFG to isolate the correct target object and avoid collisions with distractors.
+      </p>
+
+      <!-- Single Object - Full Row -->
+      <figure class="card qualitative-fullrow">
+        <img src="assets/media/results_qualitative.png" alt="Qualitative — Single Object" loading="lazy">
+        <figcaption class="center">Qualitative — Single Object (replace with your image)</figcaption>
+      </figure>
+
+      <!-- Crowded Scene - Full Row -->
+      <figure class="card qualitative-fullrow" style="margin-top:16px;">
+        <img src="assets/media/results/qual_crowded_placeholder.jpg" alt="Qualitative — Crowded Scene" loading="lazy">
+        <figcaption class="center">Qualitative — Crowded Scene (replace with your image)</figcaption>
+      </figure>
+
+
+      <!-- 2) Generalization across objects -->
+      <h3 class="subsection-title" id="results-generalization" style="margin-top:32px;">2. Generalization Across Objects</h3>
+      <p class="center">
+        IFG generalizes to unseen object instances and novel categories without retraining.
+        By combining visual-language part reasoning with geometric grasp optimization, our method successfully transfers to objects that differ in shape, topology, or affordance layout from training data.
+        We evaluate this in both isolated scenes and cluttered arrangements.
+      </p>
+
+      <!-- 2A: Two tables (single + crowded) -->
+      <!-- Single Object Table -->
+      <div class="table-wrap card">
+        <div class="table-caption">Table: Single-object generation success rates.</div>
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th>Object</th>
+              <th>Get a Grip</th>
+              <th>Ours</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>water bottle</td><td>49.1</td><td><strong>62.8</strong></td></tr>
+            <tr><td>large detergent bottle</td><td>51.2</td><td><strong>62.5</strong></td></tr>
+            <tr><td>spray bottle</td><td>43.1</td><td><strong>54.5</strong></td></tr>
+            <tr><td>pan</td><td>48.1</td><td><strong>52.1</strong></td></tr>
+            <tr><td>small lamp</td><td>56.8</td><td><strong>85.7</strong></td></tr>
+            <tr><td>spoon</td><td>42.7</td><td><strong>50.9</strong></td></tr>
+            <tr><td>vase</td><td>32.2</td><td><strong>55.9</strong></td></tr>
+            <tr><td>hammer</td><td>45.8</td><td><strong>45.8</strong></td></tr>
+            <tr><td>shark plushy</td><td>19.8</td><td><strong>25.1</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Crowded Scene Table -->
+      <div class="table-wrap card">
+        <div class="table-caption">Table: Crowded-scene lift grasp success rates.</div>
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th>Object</th>
+              <th>DexGraspNet2</th>
+              <th>GraspTTA</th>
+              <th>ISAGrasp</th>
+              <th>Ours</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Tomato Soup Can</td><td>47.8</td><td>38.3</td><td><strong>52.0</strong></td><td>45.5</td></tr>
+            <tr><td>Mug</td><td>33.2</td><td>26.9</td><td>22.6</td><td><strong>60.4</strong></td></tr>
+            <tr><td>Drill</td><td>32.1</td><td>20.8</td><td>36.4</td><td><strong>57.5</strong></td></tr>
+            <tr><td>Scissors</td><td>9.7</td><td>0.0</td><td><strong>33.7</strong></td><td>20.2</td></tr>
+            <tr><td>Screw Driver</td><td>0.0</td><td>8.3</td><td><strong>40.0</strong></td><td>22.0</td></tr>
+            <tr><td>Shampoo Bottle</td><td>50.6</td><td>25.4</td><td>18.8</td><td><strong>53.1</strong></td></tr>
+            <tr><td>Elephant Figure</td><td>23.6</td><td>29.6</td><td>24.2</td><td><strong>35.8</strong></td></tr>
+            <tr><td>Peach Can</td><td><strong>61.8</strong></td><td>28.0</td><td>55.3</td><td>60.3</td></tr>
+            <tr><td>Face Cream Tube</td><td>32.1</td><td>22.5</td><td>20.7</td><td><strong>35.5</strong></td></tr>
+            <tr><td>Tape Roll</td><td>22.7</td><td>13.9</td><td>9.8</td><td><strong>43.2</strong></td></tr>
+            <tr><td>Camel Toy</td><td>12.8</td><td>14.3</td><td>21.3</td><td><strong>21.8</strong></td></tr>
+            <tr><td>Body Wash</td><td>40.2</td><td>22.3</td><td>29.4</td><td><strong>58.3</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="center">
+        In single-object settings, IFG consistently outperforms Get a Grip across most categories, especially for functionally complex objects such as bottles, lamps, and vases.
+        In crowded scenes, IFG achieves state-of-the-art performance, often surpassing DexGraspNet2, GraspTTA, and ISAGrasp by accurately focusing on the target object using language-guided segmentation.
+      </p>
+
+      <!-- 2B: Three images (1 single, 2 crowded) -->
+      <div class="grid cols-3" style="margin-top:16px;">
+        <figure class="card">
+          <img src="assets/media/generalization_1.png" alt="Generalization — Single (image)" loading="lazy">
+          <figcaption class="center">Generalization — Single (replace)</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="assets/media/generalization_2.png" alt="Generalization — Crowded #1 (image)" loading="lazy">
+          <figcaption class="center">Generalization — Crowded #1 (replace)</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="assets/media/generalization_3.png" alt="Generalization — Crowded #2 (image)" loading="lazy">
+          <figcaption class="center">Generalization — Crowded #2 (replace)</figcaption>
+        </figure>
+      </div>
+      <p class="center">
+        Visualizations demonstrate IFG’s transfer to novel categories.
+        In single-object settings, the method identifies object parts relevant to the task (e.g., mug handle, hammer shaft).
+        In cluttered scenes, IFG isolates the correct object from nearby distractors and maintains collision-free grasp synthesis.
+      </p>
+
+      <h3 class="subsection-title">3. Generation Success Rate</h3>
+      <p class="center">
+        We evaluate the quality of grasps generated before diffusion training by measuring physical execution success in simulation.
+        IFG surpasses Get a Grip in single-object pick-and-place and pick-and-shake tasks.
+        In crowded scenes, IFG remains competitive with large-scale pretrained models such as DexGraspNet2, despite using no supervised grasp annotations.
+      </p>
+
+      <div class="grid cols-2">
+        <!-- Table 1 -->
+        <div class="table-group">
+          <div class="table-caption-top">Table: Single-object grasp generation success rates</div>
+          <div class="table-wrap card">
+            <table class="results-table">
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>Pick &amp; Shake (%)</th>
+                  <th>Lift (%)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Ours</td><td><strong>16.14</strong></td><td><strong>51.11</strong></td></tr>
+                <tr><td>Get a Grip</td><td>11.82</td><td>50.93</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Table 2 -->
+        <div class="table-group">
+          <div class="table-caption-top">Table: Crowded-scene grasp generation success rates</div>
+          <div class="table-wrap card">
+            <table class="results-table">
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>Lift (%)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Ours</td><td><strong>32.23</strong></td></tr>
+                <tr><td>GraspTTA</td><td>25.64</td></tr>
+                <tr><td>ISAGrasp</td><td>32.51</td></tr>
+                <tr><td>DexGraspNet2</td><td><strong>36.71</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- 4) Diffusion Success Rate -->
+      <h3 class="subsection-title" style="margin-top:32px;">4. Diffusion Success Rate</h3>
+      <p class="center">
+        Finally, we distill optimized grasps into a diffusion model, enabling fast feedforward grasp generation.
+        The diffusion model preserves task-oriented grasp behaviors and achieves high success rates during execution, validating that physically optimized grasps can be effectively transferred to a generative policy.
+      </p>
+      <figure class="card diffusion-figure">
+        <img src="assets/media/diffusion.png" alt="Diffusion Success Rate" loading="lazy">
+      </figure>
+
+    </section>
+    <!-- BIBTEX -->
+    <section id="bibtex">
+      <h2 class="section-title">BibTeX</h2>
+      <div class="card">
+<pre><code>@article{your_ifg_arxiv,
+  title   = {Internet-Scale Functional Grasping},
+  author  = {First, A. and Second, B. and Third, C. and Fourth, D.},
+  journal = {arXiv preprint arXiv:YYMM.NNNNN},
+  year    = {2025}
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- ACKS -->
+    <section id="acks">
+      <h2 class="section-title">Acknowledgments</h2>
+      <div class="card">
+        <p>Thank colleagues for feedback and support. Mention funding sources and hardware grants if any. Add equal-contribution and author-order notes if applicable.</p>
+      </div>
+      <p class="center small-note">Page structure inspired by open-source academic project pages.</p>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div>© 2025 IFG Authors</div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
