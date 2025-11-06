@@ -41,6 +41,17 @@ a:hover { text-decoration: underline; }
 .subtitle { display:none; } /* removed */
 .authors { color: var(--muted); margin: 8px 0 4px; }
 .affils { color: var(--muted); font-size: 15px; }
+.star {
+ color: #111;
+  font-weight: bold;
+  margin-left: 2px;
+  cursor: help;
+}
+.equal-note {
+  font-size: 0.9em;
+  color: #777;
+  margin-top: -6px;
+}
 
 /* Badges with icons */
 .badges { margin: 22px 0 4px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
@@ -329,4 +340,14 @@ footer { color: var(--muted); font-size: 14px; padding: 26px 0 50px; text-align:
   display: block;
   border-radius: var(--radius);
 }
+
+.crowded-grid figure {
+  margin-bottom: 32px;
+}
+
+.crowded-grid .grasp-viewer {
+  width: 100%;
+  height: 420px;   /* adjust for good aspect ratio */
+}
+
 

@@ -35,9 +35,13 @@
       <h1 class="title">IFG: Internet-Scale Functional Grasping</h1>
       <!-- subtitle removed per request -->
       <p class="authors">
-        <a href="https://daedalusdelta.github.io/about/">Ray Muxin Liu*</a>, <a href="https://www.linkedin.com/in/mingxuanli0227">Mingxuan Li*</a>, <a href="https://kennyshaw.net/">Kenneth Shaw</a>, <a href="https://www.cs.cmu.edu/~dpathak/">Deepak Pathak</a>
+        <a href="https://daedalusdelta.github.io/about/">Ray Muxin Liu<span class="star" title="Equal contribution">*</span></a>, 
+        <a href="https://www.linkedin.com/in/mingxuanli0227">Mingxuan Li<span class="star" title="Equal contribution">*</span></a>, 
+        <a href="https://kennyshaw.net/">Kenneth Shaw</a>, 
+        <a href="https://www.cs.cmu.edu/~dpathak/">Deepak Pathak</a>
       </p>
       <p class="affils">Carnegie Mellon University</p>
+      <p class="equal-note"><span class="star">*</span> indicates equal contribution</p>
       <div class="badges">
         <!-- arXiv Badge -->
         <a class="badge" href="#" aria-label="arXiv paper coming soon">
@@ -92,22 +96,22 @@
     <section id="abstract">
       <h2 class="section-title">Abstract</h2>
       <div class="card">
-        <p>Large Vision Models trained on internet-scale data
-        have demonstrated strong capabilities in segmenting and seman-
-        tically understanding object parts, even in cluttered, crowded
-        scenes. However, while these models can direct a robot toward the
-        general region of an object, they lack the geometric understanding
-        required to precisely control dexterous robotic hands for 3D
-        grasping. To overcome this, our key insight is to leverage
-        simulation with a force-closure grasping generation pipeline that
-        understands local geometries of the hand and object in the
-        scene. Because this pipeline is slow and requires ground-truth
-        observations, the resulting data is distilled into a diffusion model
-        that operates in real-time on camera point clouds. By combining
-        the global semantic understanding of internet-scale models with
-        the geometric precision of a simulation-based locally-aware force-
-        closure, IFG achieves high-performance semantic grasping without
-        any manually collected training data.</p>
+        <p>
+        Large Vision Models trained on internet-scale data have demonstrated strong
+        capabilities in segmenting and semantically understanding object parts, even
+        in cluttered, crowded scenes. However, while these models can direct a robot
+        toward the general region of an object, they lack the geometric understanding
+        required to precisely control dexterous robotic hands for 3D grasping.
+        To overcome this, our key insight is to leverage simulation with a
+        force-closure grasp generation pipeline that captures local hand–object
+        geometries. Because this pipeline is computationally slow and requires
+        ground-truth observations, the resulting data is distilled into a diffusion
+        model that operates in real time on camera point clouds.
+        By combining the global semantic understanding of internet-scale models with
+        the geometric precision of simulation-based local grasp optimization, IFG
+        achieves high-performance functional grasping without any manually collected
+        training data.
+       </p>
       </div>
     </section>
 
@@ -119,51 +123,72 @@
       <h3 class="subsection-title center">Single Object Grasp Examples</h3>
       <div class="grid cols-3">
         <figure>
-          <model-viewer src="assets/models/scene_0032_1_0000_mask0_idx7.glb"
+          <model-viewer src="assets/models/single_object/bottle_cap2.glb"
                         camera-controls auto-rotate loading="lazy"
                         class="grasp-viewer"></model-viewer>
-          <figcaption class="center">Grasp 01 — mug</figcaption>
+          <figcaption class="center">water bottle</figcaption>
+        </figure>
+
+        <!-- <figure>
+          <model-viewer src="assets/models/single_object/bottle2_cap2.glb"
+                        camera-controls auto-rotate loading="lazy"
+                        class="grasp-viewer"></model-viewer>
+          <figcaption class="center">ranch bottle</figcaption>
         </figure>
 
         <figure>
-          <model-viewer src="assets/models/scene_0032_1_0000_mask0_idx7.glb"
+          <model-viewer src="assets/models/single_object/bottle3_cap.glb"
                         camera-controls auto-rotate loading="lazy"
                         class="grasp-viewer"></model-viewer>
-          <figcaption class="center">Grasp 02 — hammer</figcaption>
+          <figcaption class="center">jar</figcaption>
+        </figure> -->
+
+        <figure>
+          <model-viewer src="assets/models/single_object/hammer.glb"
+                        camera-controls auto-rotate loading="lazy"
+                        class="grasp-viewer"></model-viewer>
+          <figcaption class="center">Hammer</figcaption>
         </figure>
 
         <figure>
-          <model-viewer src="assets/models/scene_0032_1_0000_mask0_idx7.glb"
+          <model-viewer src="assets/models/single_object/spoon.glb"
                         camera-controls auto-rotate loading="lazy"
                         class="grasp-viewer"></model-viewer>
-          <figcaption class="center">Grasp 03 — bottle</figcaption>
+          <figcaption class="center">Large Spoon</figcaption>
         </figure>
       </div>
 
       <!-- CROWDED SCENE GRASPS -->
       <h3 class="subsection-title center" style="margin-top: 40px;">Crowded Scene Grasp Examples</h3>
-      <div class="grid cols-3">
-        <figure>
-          <model-viewer src="assets/models/LEAP_g15.glb"
-                        camera-controls auto-rotate loading="lazy"
-                        class="grasp-viewer"></model-viewer>
-          <figcaption class="center">Grasp C01 — bin picking</figcaption>
-        </figure>
+      <div class="grid cols-1 crowded-grid">
+      <figure>
+        <model-viewer src="assets/models/crowded_scene/scene_0032_1_0000_mask0_idx7.glb"
+                      camera-controls auto-rotate loading="lazy"
+                      class="grasp-viewer"></model-viewer>
+        <figcaption class="center">Clustered Scene 1</figcaption>
+      </figure>
 
-        <figure>
-          <model-viewer src="assets/models/LEAP_g48.glb"
-                        camera-controls auto-rotate loading="lazy"
-                        class="grasp-viewer"></model-viewer>
-          <figcaption class="center">Grasp C02 — shelf clutter</figcaption>
-        </figure>
+      <figure>
+        <model-viewer src="assets/models/crowded_scene/scene_3506_with_grasps.glb"
+                      camera-controls auto-rotate loading="lazy"
+                      class="grasp-viewer"></model-viewer>
+        <figcaption class="center">Clustered Scene 2</figcaption>
+      </figure>
 
-        <figure>
-          <model-viewer src="assets/models/LEAP_g67.glb"
-                        camera-controls auto-rotate loading="lazy"
-                        class="grasp-viewer"></model-viewer>
-          <figcaption class="center">Grasp C03 — table scene</figcaption>
-        </figure>
-      </div>
+      <figure>
+        <model-viewer src="assets/models/crowded_scene/scene_7122_with_grasps.glb"
+                      camera-controls auto-rotate loading="lazy"
+                      class="grasp-viewer"></model-viewer>
+        <figcaption class="center">Clustered Scene 3</figcaption>
+      </figure>
+
+      <figure>
+        <model-viewer src="assets/models/crowded_scene/scene_9033_with_grasps.glb"
+                      camera-controls auto-rotate loading="lazy"
+                      class="grasp-viewer"></model-viewer>
+        <figcaption class="center">Clustered Scene 4</figcaption>
+      </figure>
+    </div>
     </section>
 
 
@@ -240,13 +265,7 @@
       <!-- Single Object - Full Row -->
       <figure class="card qualitative-fullrow">
         <img src="assets/media/results_qualitative.png" alt="Qualitative — Single Object" loading="lazy">
-        <figcaption class="center">Qualitative — Single Object (replace with your image)</figcaption>
-      </figure>
-
-      <!-- Crowded Scene - Full Row -->
-      <figure class="card qualitative-fullrow" style="margin-top:16px;">
-        <img src="assets/media/results/qual_crowded_placeholder.jpg" alt="Qualitative — Crowded Scene" loading="lazy">
-        <figcaption class="center">Qualitative — Crowded Scene (replace with your image)</figcaption>
+        <figcaption class="center">Qualitative Results</figcaption>
       </figure>
 
 
