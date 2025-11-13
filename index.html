@@ -60,31 +60,23 @@
       <p class="equal-note"><span class="star">*</span> indicates equal contribution</p>
       <div class="badges">
         <!-- arXiv Badge -->
-        <a class="badge" href="#" aria-label="arXiv paper coming soon">
+        <a class="badge" href="https://arxiv.org/abs/2511.09558">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
             <!-- document icon -->
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
             <polyline points="14 2 14 8 20 8"></polyline>
           </svg>
-          <span>arXiv</span><span class="coming-soon">(coming soon)</span>
+          <span>arXiv</span>
         </a>
 
         <!-- PDF Download Badge -->
-        <a class="badge" href="assets/pdf/IFG.pdf" target="_blank">
+        <a class="badge" href="assets/pdf/IFG: Internet-Scale Guidance for Functional Grasping Generation.pdf" target="_blank">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
             <polyline points="7 10 12 15 17 10"></polyline>
             <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
           <span>PDF</span>
-        </a>
-
-        <a class="badge" href="#" aria-label="Code coming soon">
-          <!-- GitHub mark simplified -->
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" class="icon">
-            <path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56l-.02-2.19c-3.2.7-3.87-1.37-3.87-1.37-.53-1.36-1.3-1.72-1.3-1.72-1.06-.73.08-.72.08-.72 1.17.08 1.78 1.2 1.78 1.2 1.04 1.77 2.73 1.26 3.4.96.11-.76.41-1.26.75-1.55-2.55-.29-5.23-1.28-5.23-5.67 0-1.25.45-2.27 1.2-3.07-.12-.29-.52-1.46.11-3.04 0 0 .98-.31 3.2 1.17a11.1 11.1 0 0 1 5.82 0c2.22-1.48 3.2-1.17 3.2-1.17.63 1.58.23 2.75.11 3.04.75.8 1.2 1.82 1.2 3.07 0 4.4-2.69 5.38-5.25 5.66.42.36.79 1.07.79 2.17l-.01 3.21c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"></path>
-          </svg>
-          <span>Code</span><span class="coming-soon">(coming soon)</span>
         </a>
         <a class="badge" href="#" aria-label="Poster coming soon">
           <!-- Poster icon (image) -->
@@ -113,22 +105,10 @@
       <h2 class="section-title">Abstract</h2>
       <div class="card">
         <p>
-        Large Vision Models trained on internet-scale data have demonstrated strong
-        capabilities in segmenting and semantically understanding object parts, even
-        in cluttered, crowded scenes. However, while these models can direct a robot
-        toward the general region of an object, they lack the geometric understanding
-        required to precisely control dexterous robotic hands for 3D grasping.
-        To overcome this, our key insight is to leverage simulation with a
-        force-closure grasp generation pipeline that captures local hand–object
-        geometries. Because this pipeline is computationally slow and requires
-        ground-truth observations, the resulting data is distilled into a diffusion
-        model that operates in real time on camera point clouds.
-        By combining the global semantic understanding of internet-scale models with
-        the geometric precision of simulation-based local grasp optimization, IFG
-        achieves high-performance functional grasping without any manually collected
-        training data.
-       </p>
+          Large Vision Models trained on internet-scale data excel at segmenting and semantically understanding object parts, even in cluttered scenes. However, while these models can guide a robot toward the general region of an object, they lack the geometric precision needed to control dexterous robotic hands for precise 3D grasping. To address this, IFG leverages simulation through a force-closure grasp generation pipeline that captures local hand–object geometries, then distills this slow, ground-truth-dependent process into a diffusion model that operates in real time on camera point clouds. By combining the global semantic understanding of internet-scale vision with the geometric accuracy of simulation-based local reasoning, IFG achieves high-performance semantic grasping without any manually collected training data.
+        </p>
       </div>
+
     </section>
 
     <!-- Unified Grasps Section -->
@@ -355,19 +335,20 @@
 
       <!-- 2B: Three images (1 single, 2 crowded) -->
       <div class="grid cols-3" style="margin-top:16px;">
-        <figure class="card">
-          <img src="assets/media/generalization_1.png" alt="Generalization — Single (image)" loading="lazy">
-          <figcaption class="center">Generalization — Single (replace)</figcaption>
+        <figure class="card" style="display:flex; flex-direction:column; align-items:center; justify-content:space-between; height:100%;">
+          <img src="assets/media/generalization_1.png" alt="Single Object Success Rate" loading="lazy" style="width:100%; height:auto;">
+          <figcaption class="center" style="margin-top:auto;">Single Object Top-k Success Rate</figcaption>
         </figure>
-        <figure class="card">
-          <img src="assets/media/generalization_2.png" alt="Generalization — Crowded #1 (image)" loading="lazy">
-          <figcaption class="center">Generalization — Crowded #1 (replace)</figcaption>
+        <figure class="card" style="display:flex; flex-direction:column; align-items:center; justify-content:space-between; height:100%;">
+          <img src="assets/media/generalization_2.png" alt="Cluttered Scene 1" loading="lazy" style="width:100%; height:auto;">
+          <figcaption class="center" style="margin-top:auto;">Cluttered Scene Generalization</figcaption>
         </figure>
-        <figure class="card">
-          <img src="assets/media/generalization_3.png" alt="Generalization — Crowded #2 (image)" loading="lazy">
-          <figcaption class="center">Generalization — Crowded #2 (replace)</figcaption>
+        <figure class="card" style="display:flex; flex-direction:column; align-items:center; justify-content:space-between; height:100%;">
+          <img src="assets/media/generalization_3.png" alt="Generalization — Cluttered Scene" loading="lazy" style="width:100%; height:auto;">
+          <figcaption class="center" style="margin-top:auto;">Cluttered Scene Success Rate</figcaption>
         </figure>
       </div>
+
       <p class="center">
         Visualizations demonstrate IFG’s transfer to novel categories.
         In single-object settings, the method identifies object parts relevant to the task (e.g., mug handle, hammer shaft).
@@ -440,11 +421,14 @@
     <section id="bibtex">
       <h2 class="section-title">BibTeX</h2>
       <div class="card">
-<pre><code>@article{your_ifg_arxiv,
-  title   = {Internet-Scale Functional Grasping},
-  author  = {First, A. and Second, B. and Third, C. and Fourth, D.},
-  journal = {arXiv preprint arXiv:YYMM.NNNNN},
-  year    = {2025}
+<pre><code>@misc{liu2025ifginternetscaleguidancefunctional,
+      title={IFG: Internet-Scale Guidance for Functional Grasping Generation}, 
+      author={Ray Muxin Liu and Mingxuan Li and Kenneth Shaw and Deepak Pathak},
+      year={2025},
+      eprint={2511.09558},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2511.09558}, 
 }</code></pre>
       </div>
     </section>
@@ -453,9 +437,13 @@
     <section id="acks">
       <h2 class="section-title">Acknowledgments</h2>
       <div class="card">
-        <p>Thank colleagues for feedback and support. Mention funding sources and hardware grants if any. Add equal-contribution and author-order notes if applicable.</p>
+        <p>We thank Jason Liu, Andrew Wang, Yulong Li, Jiahui (Jim)
+Yang, Sri Anumakonda for helpful discussions and feedback.
+This work was supported in part by the Air Force Office of
+Scientific Research (AFOSR) under Grant No. FA955023-1-
+0747 and by the Office of Naval Research (ONR) MURI under
+Grant No. N00014-24-1-2748.</p>
       </div>
-      <p class="center small-note">Page structure inspired by open-source academic project pages.</p>
     </section>
 
     <footer>
